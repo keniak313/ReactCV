@@ -1,56 +1,5 @@
 import { createContext } from "react";
 
-export const initDataContext = {
-  personalInfo: {
-    firstName: "John",
-    lastName: "Doe",
-    jobTitle: "Miner",
-    shortBio: "Mining here and there, everywhere!",
-  },
-  contact: {
-    address: "Universe",
-    phone: "293-204-984",
-    email: "something@somewhere.com",
-    website: "http://www.something.pl",
-  },
-  experiance: [
-    {
-      company: "Mariolka C.O.",
-      jobTitle: "Super Miner",
-      date: "329 b.c - Present",
-      place: "Universe",
-      desc: "Mining gems mostly",
-      key: 0,
-    },
-    {
-      company: "Super Miners C.O.",
-      jobTitle: "Welder",
-      date: "The Future",
-      place: "Moon",
-      desc: "Doing something always!",
-      key: 1,
-    },
-  ],
-  custom: [
-    {
-      name: "Skills",
-      key: 0,
-      items: [
-        { name: "Sculpting", key: 0 },
-        { name: "Texturing", key: 1 },
-      ],
-    },
-    {
-      name: "Software",
-      key: 1,
-      items: [
-        { name: "Blender", key: 0 },
-        { name: "Zbrush", key: 1 },
-      ],
-    },
-  ],
-};
-
 export const initData = {
   static: {
     personalInfo: {

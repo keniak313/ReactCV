@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { DataContext, initDataContext } from "./Data";
+import { useContext } from "react";
+import { DataContext} from "./Data";
 import Category from "./Category";
 import InputField from "./InputField";
 
