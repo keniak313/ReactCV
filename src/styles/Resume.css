@@ -1,0 +1,93 @@
+#resume {
+  background-color: white;
+  padding: 1.6rem;
+  border-radius: 0.5rem;
+  min-height: 100%;
+}
+
+#resume{
+  section#top {
+    display: flex;
+    flex-direction: column;
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+  }
+  
+  section#main {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  }
+  
+  .person {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.2rem;
+    white-space: pre-wrap;
+  }
+  
+  .fullName {
+    display: flex;
+    gap: 0.2rem;
+  }
+  
+  section#side {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+  
+  .experiance {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .experiance .title{
+      background-color: rgb(224, 224, 224);
+  }
+  
+  .subExperiance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  
+  .company {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+  
+  .jobTitle {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+  
+  .date {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+  
+  .place {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  }
+  
+  .desc {
+    grid-row: 3 / 4;
+    grid-column: 1 / 3;
+  }
+  
+  container{
+    display: grid;
+    grid-template-rows: 0;
+    overflow: hidden;
+    grid-auto-flow: row;
+  }
+}
+
