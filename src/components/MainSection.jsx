@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SideMenu from "./SideMenu";
 import Resume from "./Resume";
-import { DataContext, initDataContext, initData } from "./Data";
+import { DataContext, initData } from "./Data";
 
 export default function MainSection() {
   const [dataContent, setDataContent] = useState(() => initData);
