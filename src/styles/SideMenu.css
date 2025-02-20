@@ -273,3 +273,18 @@ svg {
     opacity: 0;
   }
 }
+
+.subCatTitle{
+  button.remove{
+    opacity: 0.2;
+  }
+}
+
+.subCatTitle:hover{
+  button.remove{
+    opacity: 0.5;
+  }
+  button.remove:hover{
+    opacity: 1;
+  }
+}

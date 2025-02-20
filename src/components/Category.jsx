@@ -1,7 +1,6 @@
 import { useState, useImperativeHandle, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import RemoveButton from "./RemoveButton";
 
 export default function Category({
@@ -62,16 +61,17 @@ export default function Category({
         onAnimationEnd={onAnimEnd}
         ref={thisRef}
       >
+              {isSubCat && (
+        <RemoveButton
+          onClick={() => {
+            setRemove(!remove);
+          }}
+        />
+      )}
         {isSubCat ? <h3>{title}</h3> : <h2>{title}</h2>}
         <FontAwesomeIcon icon={faSortDown} className={expand ? "rotate" : ""} />
       </button>
-      {isSubCat && (
-          <RemoveButton
-            onClick={() => {
-              setRemove(!remove);
-            }}
-          />
-        )}
+
       <div
         className={`${isSubCat ? "subContent" : "content"} ${expandHandler()}`}
       >
