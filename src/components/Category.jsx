@@ -61,17 +61,16 @@ export default function Category({
         onAnimationEnd={onAnimEnd}
         ref={thisRef}
       >
-              {isSubCat && (
+        {isSubCat ? <h3>{title}</h3> : <h2>{title}</h2>}
+        <FontAwesomeIcon icon={faSortDown} className={expand ? "rotate" : ""} />
+      </button>
+      {isSubCat && (
         <RemoveButton
           onClick={() => {
             setRemove(!remove);
           }}
         />
       )}
-        {isSubCat ? <h3>{title}</h3> : <h2>{title}</h2>}
-        <FontAwesomeIcon icon={faSortDown} className={expand ? "rotate" : ""} />
-      </button>
-
       <div
         className={`${isSubCat ? "subContent" : "content"} ${expandHandler()}`}
       >
