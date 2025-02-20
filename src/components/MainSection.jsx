@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { useImmer } from "use-immer";
 import SideMenu from "./SideMenu";
 import Resume from "./Resume";
 import { DataContext, initData } from "./Data";
 
 export default function MainSection() {
-  const [dataContent, setDataContent] = useState(() => initData);
+  const [dataContent, setDataContent] = useImmer(() => initData);
 
   function updateStaticData(event, category, id) {
-    const newData = { ...dataContent };
+    //const newData = { ...dataContent };
     switch (category) {
       case "personalInfo":
-        newData.static[category][id] = event.target.value;
+        setDataContent((draft) => {
+          draft.static[category][id] = event.target.value;
+        });
         break;
       case "contact":
-        newData.static[category][id] = event.target.value;
+        setDataContent((draft) => {
+          draft.static[category][id] = event.target.value;
+        });
         break;
     }
-    setDataContent(newData);
   }
 
   function updateDynamicData(
@@ -26,20 +29,19 @@ export default function MainSection() {
     isSubItem = false,
     subIndex
   ) {
-    const newData = { ...dataContent };
     if (!isSubItem) {
-      newData.dynamic[index].items[itemIndex].value = event.target.value;
+      setDataContent((draft) => {
+        draft.dynamic[index].items[itemIndex].value = event.target.value;
+      });
     } else {
-      newData.dynamic[index].items[itemIndex].subItems[subIndex].value =
-        event.target.value;
+      setDataContent((draft) => {
+        draft.dynamic[index].items[itemIndex].subItems[subIndex].value =
+          event.target.value;
+      });
     }
-
-    setDataContent(newData);
   }
 
   function newData(index = 0, subIndex = 0, isList = false) {
-    const newData = { ...dataContent };
-
     const newExperiance = {
       key: crypto.randomUUID(),
       subItems: [
@@ -59,44 +61,43 @@ export default function MainSection() {
     };
 
     console.log(`Index ${index}, SubIndex ${subIndex}`);
-    switch (newData.dynamic[index].key) {
+    switch (dataContent.dynamic[index].key) {
       case "experiance":
-        newData.dynamic[index].items.push(newExperiance);
+        setDataContent((draft) => {
+          draft.dynamic[index].items.push(newExperiance);
+        });
         break;
       case "additionalInfo":
         if (!isList) {
-          newData.dynamic[index].items.push(newAdditionalInfo);
+          setDataContent((draft) => {
+            draft.dynamic[index].items.push(newAdditionalInfo);
+          });
           break;
         } else {
           const newSubAdditionalInfo = {
             key: crypto.randomUUID(),
             value: "",
           };
-          newData.dynamic[index].items[subIndex].subItems.push(
-            newSubAdditionalInfo
-          );
+          setDataContent((draft) => {
+            draft.dynamic[index].items[subIndex].subItems.push(
+              newSubAdditionalInfo
+            );
+          });
           break;
         }
     }
-
-    setDataContent(newData);
   }
 
-  function removeData(
-    index = 0,
-    itemIndex = 0,
-    subIndex = 0,
-    isList = false
-  ) {
-    console.log("PPstryk");
-    const newData = { ...dataContent };
+  function removeData(index = 0, itemIndex = 0, subIndex = 0, isList = false) {
     if (!isList) {
-      newData.dynamic[index].items.splice(itemIndex, 1);
+      setDataContent((draft) => {
+        draft.dynamic[index].items.splice(itemIndex, 1);
+      });
     } else {
-      newData.dynamic[index].items[itemIndex].subItems.splice(subIndex, 1);
+      setDataContent((draft) => {
+        draft.dynamic[index].items[itemIndex].subItems.splice(subIndex, 1);
+      });
     }
-
-    setDataContent(newData);
   }
 
   return (
